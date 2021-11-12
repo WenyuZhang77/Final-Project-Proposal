@@ -47,3 +47,5 @@ Furthermore, linear regression would be performed, and it would be used
 to predict the crime rate for each distribution in the next couple of
 years. Since the dataset has 7,375,993 datas, it is challenging to tidy
 such a large dataset.
+
+test fot github
