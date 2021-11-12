@@ -28,7 +28,7 @@ of major cities in the US.
 
 As the brand new residents of NYC, we would like to explore the security
 situation and stability of this city. In addition, analyzing crime data
-from nypd might raise the safety awareness of the victim population as
+from NYPD might raise the safety awareness of the victim population as
 well as other citizens and visitors, thus they can avoid high-crime
 areas.
 
@@ -36,6 +36,14 @@ Finally, our project also could provide housing and daily travel advice
 to our classmates and alumni.
 
 ### The intended final products
+
+Our intended final product should be a website that includes the crime
+reports for each of the five boroughs of NYC from 2006 to the present.
+From the reports, we want to see the yearly trends of crime rate in the
+whole city and specific areas respectively and do the prediction for the
+next few years.
+
+We also want to see the distribution of local crime levels
 
 ### The anticipated data sources
 
@@ -61,7 +69,7 @@ such a large dataset.
 
 11/13/2021 - 11/15/2021: tidy the data
 
-11/16/2021 - 11/22/2021: perform the analysis
+11/16/2021 - 11/22/2021: perform the visualizations and analysis
 
 11/23/2021 - 11/28/2021: doing linear regression and prediction
 
