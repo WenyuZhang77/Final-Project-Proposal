@@ -39,11 +39,14 @@ to our classmates and alumni.
 
 Our intended final product should be a website that includes the crime
 reports for each of the five boroughs of NYC from 2006 to the present.
-From the reports, we want to see the yearly trends of crime rate in the
-whole city and specific areas respectively and do the prediction for the
-next few years.
 
-We also want to see the distribution of local crime levels
+From the reports, we want to see the yearly trends of crime rate and the
+distribution of crime levels in the whole city and specific areas
+respectively and do the prediction for the next few years.
+
+Moreover, counting the types of victims and the frequency of crime in
+different premises, and doing statistics on the time of day and the
+month of the year with the highest crime rate as well.
 
 ### The anticipated data sources
 
