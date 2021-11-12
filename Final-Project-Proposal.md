@@ -26,6 +26,15 @@ United States. From the 1990s to the 2010s, the crime rate of NYC
 dropped sharply. Nowadays, NYC has become one of the lowest crime rates
 of major cities in the US.
 
+As the brand new residents of NYC, we would like to explore the security
+situation and stability of this city. In addition, analyzing crime data
+from nypd might raise the safety awareness of the victim population as
+well as other citizens and visitors, thus they can avoid high-crime
+areas.
+
+Finally, our project also could provide housing and daily travel advice
+to our classmates and alumni.
+
 ### The intended final products
 
 ### The anticipated data sources
@@ -47,5 +56,3 @@ Furthermore, linear regression would be performed, and it would be used
 to predict the crime rate for each distribution in the next couple of
 years. Since the dataset has 7,375,993 datas, it is challenging to tidy
 such a large dataset.
-
-test fot github
