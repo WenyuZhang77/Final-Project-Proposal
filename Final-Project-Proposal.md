@@ -56,3 +56,17 @@ Furthermore, linear regression would be performed, and it would be used
 to predict the crime rate for each distribution in the next couple of
 years. Since the dataset has 7,375,993 datas, it is challenging to tidy
 such a large dataset.
+
+### The planned timeline
+
+11/13/2021 - 11/15/2021: tidy the data
+
+11/16/2021 - 11/22/2021: perform the analysis
+
+11/23/2021 - 11/28/2021: doing linear regression and prediction
+
+11/29/2021 - 12/05/2021: writing discussion and background
+
+12/06/2021 - 12/10/2021: doing webpage and screencast
+
+12/11/2021 - check again and finish the final report
