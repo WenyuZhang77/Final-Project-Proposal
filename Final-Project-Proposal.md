@@ -3,6 +3,8 @@ Final-Project-Proposal
 Wenyu Zhang
 11/12/2021
 
+## Welcome to New York!
+
 ### Group member (names and UNIs)
 
 Shiwei Chen - sc4935
@@ -17,7 +19,7 @@ Yiming Li - yl4925
 
 ### The tentative project title
 
-Risky NY
+Risky NYC
 
 ### The motivation for this project
 

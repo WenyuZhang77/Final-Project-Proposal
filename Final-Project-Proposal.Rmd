@@ -4,6 +4,7 @@ author: "Wenyu Zhang"
 date: "11/12/2021"
 output: github_document
 ---
+## Welcome to New York!
 
 ### Group member (names and UNIs)
 Shiwei Chen - sc4935
@@ -18,7 +19,7 @@ Yiming Li - yl4925
 
 ### The tentative project title
 
-Risky NY
+Risky NYC
 
 ### The motivation for this project
 In the 1980s, New York was one of the most crime-ridden cities in the United States. From the 1990s to the 2010s, the crime rate of NYC dropped sharply. Nowadays, NYC has become one of the lowest crime rates of major cities in the US.
