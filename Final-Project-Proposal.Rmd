@@ -55,4 +55,9 @@ Firstly, the analyses would be performed on the crime distribution of the distri
 12/11/2021 - check again and finish the final report
 
 
+-------------------------------------------------------
+
+Clean the data
+
+
 

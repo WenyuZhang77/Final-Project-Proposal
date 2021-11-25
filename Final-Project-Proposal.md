@@ -83,3 +83,7 @@ such a large dataset.
 12/06/2021 - 12/10/2021: doing webpage and screencast
 
 12/11/2021 - check again and finish the final report
+
+------------------------------------------------------------------------
+
+Clean the data
