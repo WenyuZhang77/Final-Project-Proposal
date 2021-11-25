@@ -23,7 +23,15 @@ NYPD =
 NYPD_clean = 
   NYPD %>% 
   janitor::clean_names() %>% 
-  select(-cmplnt_num, -cmplnt_to_dt, -cmplnt_to_tm, -rpt_dt, -x_coord_cd, -y_coord_cd, -housing_psa) %>% 
-  separate(cmplnt_fr_dt, into = c("year", "month", "day"), sep = "-")
+  select(-cmplnt_num, -cmplnt_to_dt, -cmplnt_to_tm, -rpt_dt, -x_coord_cd, -y_coord_cd, -housing_psa, -patrol_boro, -loc_of_occur_desc) %>% 
+  separate(cmplnt_fr_dt, into = c("year", "month", "day"), sep = "-") %>% 
+    rename(exact_crime_time = cmplnt_fr_tm, 
+         precinct_of_crime = addr_pct_cd,
+         description_of_crime = ofns_desc,
+         completed_or_not = crm_atpt_cptd_cd,
+         level_of_offense = law_cat_cd,
+         name_of_borough = boro_nm,
+         description_of_premises = prem_typ_desc
+         )
 ```
 
