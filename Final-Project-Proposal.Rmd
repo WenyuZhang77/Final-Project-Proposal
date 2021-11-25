@@ -23,6 +23,11 @@ Risky NY
 ### The motivation for this project
 In the 1980s, New York was one of the most crime-ridden cities in the United States. From the 1990s to the 2010s, the crime rate of NYC dropped sharply. Nowadays, NYC has become one of the lowest crime rates of major cities in the US.
 
+As the brand new residents of NYC, we would like to explore the security situation and stability of this city. In addition, analyzing crime data from nypd might raise the safety awareness of the victim population as well as other citizens and visitors, thus they can avoid high-crime areas.
+
+Finally, our project also could provide housing and daily travel advice to our classmates and alumni.
+
+
 ### The intended final products
 
 ### The anticipated data sources
@@ -30,6 +35,5 @@ The data was collected from NYC open data, which is about NYPD Complaint Data Hi
 
 ### The planned analyses/visualizations/coding challenges
 Firstly, the analyses would be performed on the crime distribution of the district, and an interactive map would be generated. Then the analysis of information (age, gender, race) of the victim would also be performed, and the bar chart would also be used to visualize the result. Furthermore, linear regression would be performed, and it would be used to predict the crime rate for each distribution in the next couple of years. Since the dataset has 7,375,993 datas, it is challenging to tidy such a large dataset. 
-
 
 

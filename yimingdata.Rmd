@@ -1,0 +1,27 @@
+---
+title: "program"
+author: "Yiming Li"
+date: "11/25/2021"
+output: github_document
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(httr)
+```
+
+read data
+```{r}
+NYPD = 
+  GET("https://data.cityofnewyork.us/resource/qgea-i56i.csv", 
+      query = list("$limit" = 250000)) %>% 
+  content("parsed")
+```
+
+```{r}
+NYPD_clean = NYPD %>% 
+  select(-cmplnt_num, -cmplnt_to_dt, -cmplnt_to_tm) %>% 
+  filter(is.na(hadevelopt) == FALSE)
+```
+
