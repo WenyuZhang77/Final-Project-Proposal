@@ -1,0 +1,28 @@
+---
+title: "Aw-version"
+author: "Shiwei Chen"
+date: "11/25/2021"
+output: github_document
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(httr)
+```
+
+
+Clean the data
+
+```{r}
+NYPD = 
+  GET("https://data.cityofnewyork.us/resource/qgea-i56i.csv", 
+      query = list("$limit" = 250000)) %>% 
+  content("parsed") 
+```
+
+```{r}
+
+```
+
+
