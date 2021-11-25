@@ -56,7 +56,9 @@ NYPD =
     ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
 ``` r
-NYPD_clean = NYPD %>% 
-  select(-cmplnt_num, -cmplnt_to_dt, -cmplnt_to_tm) %>% 
-  filter(is.na(hadevelopt) == FALSE)
+NYPD_clean = 
+  NYPD %>% 
+  janitor::clean_names() %>% 
+  select(-cmplnt_num, -cmplnt_to_dt, -cmplnt_to_tm, -rpt_dt, -x_coord_cd, -y_coord_cd, -housing_psa) %>% 
+  separate(cmplnt_fr_dt, into = c("year", "month", "day"), sep = "-")
 ```
