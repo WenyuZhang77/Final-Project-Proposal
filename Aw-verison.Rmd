@@ -11,18 +11,37 @@ library(rvest)
 library(httr)
 ```
 
-
-Clean the data
-
+read data
 ```{r}
 NYPD = 
   GET("https://data.cityofnewyork.us/resource/qgea-i56i.csv", 
       query = list("$limit" = 250000)) %>% 
-  content("parsed") 
+  content("parsed")
 ```
 
 ```{r}
-
+NYPD_clean = 
+  NYPD %>% 
+  janitor::clean_names() %>% 
+  select(-cmplnt_num, -cmplnt_to_dt, -cmplnt_to_tm, -rpt_dt, -x_coord_cd, -y_coord_cd, -housing_psa, -patrol_boro, -loc_of_occur_desc) %>% 
+  separate(cmplnt_fr_dt, into = c("year", "month", "day"), sep = "-") %>% 
+    rename(exact_crime_time = cmplnt_fr_tm, 
+         precinct_of_crime = addr_pct_cd,
+         description_of_crime = ofns_desc,
+         completed_or_not = crm_atpt_cptd_cd,
+         level_of_offense = law_cat_cd,
+         name_of_borough = boro_nm,
+         description_of_premises = prem_typ_desc
+         )
 ```
 
+```{r}
+NYPD_race = NYPD_clean %>% 
+  select(vic_race, vic_age_group) %>% 
+  group_by(vic_race) %>% 
+  summarize(number_of_people = n()) %>% 
+  mutate(vic_race = reorder(vic_race, number_of_people)) %>% 
+  knitr::kable()
+NYPD_race
+```
 
