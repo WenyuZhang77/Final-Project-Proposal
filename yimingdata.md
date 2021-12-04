@@ -33,35 +33,15 @@ library(rvest)
 library(httr)
 ```
 
-read data
-
-``` r
-NYPD = 
-  GET("https://data.cityofnewyork.us/resource/qgea-i56i.csv", 
-      query = list("$limit" = 250000)) %>% 
-  content("parsed")
-```
-
-    ## Rows: 250000 Columns: 35
-
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## chr  (19): ofns_desc, pd_desc, crm_atpt_cptd_cd, law_cat_cd, boro_nm, loc_of...
-    ## dbl  (11): cmplnt_num, addr_pct_cd, ky_cd, pd_cd, jurisdiction_code, housing...
-    ## dttm  (3): cmplnt_fr_dt, cmplnt_to_dt, rpt_dt
-    ## time  (2): cmplnt_fr_tm, cmplnt_to_tm
-
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
 ``` r
 NYPD_clean = 
-  NYPD %>% 
+  read.csv("sample.csv") %>% 
   janitor::clean_names() %>% 
-  select(-cmplnt_num, -cmplnt_to_dt, -cmplnt_to_tm, -rpt_dt, -x_coord_cd, -y_coord_cd, -housing_psa, -patrol_boro, -loc_of_occur_desc) %>% 
-  separate(cmplnt_fr_dt, into = c("year", "month", "day"), sep = "-") %>% 
-    rename(exact_crime_time = cmplnt_fr_tm, 
+  select(-x, -cmplnt_num, -cmplnt_to_dt, -cmplnt_to_tm, -rpt_dt, -x_coord_cd, 
+         -y_coord_cd, -housing_psa, -patrol_boro, -loc_of_occur_desc) %>% 
+  separate(cmplnt_fr_dt, into = c("month", "day", "year"), sep = "/") %>% 
+  filter(!is.na(year)) %>% 
+  rename(exact_crime_time = cmplnt_fr_tm, 
          precinct_of_crime = addr_pct_cd,
          description_of_crime = ofns_desc,
          completed_or_not = crm_atpt_cptd_cd,
@@ -70,3 +50,24 @@ NYPD_clean =
          description_of_premises = prem_typ_desc
          )
 ```
+
+    ## Warning: Expected 3 pieces. Missing pieces filled with `NA` in 9 rows [1475,
+    ## 6564, 17447, 27209, 80282, 83451, 88511, 95042, 95441].
+
+``` r
+NYPD_clean %>% 
+  select(completed_or_not, name_of_borough) %>% 
+  group_by(completed_or_not, name_of_borough) %>% 
+  summarise(count = n()) %>% 
+  filter(name_of_borough != "") %>% 
+  pivot_wider(names_from = "name_of_borough", 
+              values_from = "count") %>% 
+  knitr::kable()
+```
+
+    ## `summarise()` has grouped output by 'completed_or_not'. You can override using the `.groups` argument.
+
+| completed\_or\_not | BRONX | BROOKLYN | MANHATTAN | QUEENS | STATEN ISLAND |
+|:-------------------|------:|---------:|----------:|-------:|--------------:|
+| ATTEMPTED          |   318 |      521 |       439 |    331 |            55 |
+| COMPLETED          | 21304 |    29098 |     23518 |  19608 |          4669 |

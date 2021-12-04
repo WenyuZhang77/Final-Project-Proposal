@@ -11,21 +11,15 @@ library(rvest)
 library(httr)
 ```
 
-read data
-```{r}
-NYPD = 
-  GET("https://data.cityofnewyork.us/resource/qgea-i56i.csv", 
-      query = list("$limit" = 250000)) %>% 
-  content("parsed")
-```
-
 ```{r}
 NYPD_clean = 
-  NYPD %>% 
+  read.csv("sample.csv") %>% 
   janitor::clean_names() %>% 
-  select(-cmplnt_num, -cmplnt_to_dt, -cmplnt_to_tm, -rpt_dt, -x_coord_cd, -y_coord_cd, -housing_psa, -patrol_boro, -loc_of_occur_desc) %>% 
-  separate(cmplnt_fr_dt, into = c("year", "month", "day"), sep = "-") %>% 
-    rename(exact_crime_time = cmplnt_fr_tm, 
+  select(-x, -cmplnt_num, -cmplnt_to_dt, -cmplnt_to_tm, -rpt_dt, -x_coord_cd, 
+         -y_coord_cd, -housing_psa, -patrol_boro, -loc_of_occur_desc) %>% 
+  separate(cmplnt_fr_dt, into = c("month", "day", "year"), sep = "/") %>% 
+  filter(!is.na(year)) %>% 
+  rename(exact_crime_time = cmplnt_fr_tm, 
          precinct_of_crime = addr_pct_cd,
          description_of_crime = ofns_desc,
          completed_or_not = crm_atpt_cptd_cd,
@@ -33,5 +27,16 @@ NYPD_clean =
          name_of_borough = boro_nm,
          description_of_premises = prem_typ_desc
          )
+```
+
+```{r}
+NYPD_clean %>% 
+  select(completed_or_not, name_of_borough) %>% 
+  group_by(completed_or_not, name_of_borough) %>% 
+  summarise(count = n()) %>% 
+  filter(name_of_borough != "") %>% 
+  pivot_wider(names_from = "name_of_borough", 
+              values_from = "count") %>% 
+  knitr::kable()
 ```
 
